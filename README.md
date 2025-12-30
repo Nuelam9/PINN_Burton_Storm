@@ -45,6 +45,7 @@ Where:
 - **Python Version:** 3.11.6
 - **CUDA Version:** 11.8.0
 - **Operating System:** Linux (Broadwell architecture)
+
 Note: It is recommended to use a virtual environment.
 
 ## Installation
