@@ -8,8 +8,8 @@ title: "pinn-burton-storm: A Physics-Informed Neural Network Approach to the Gan
 version: 1.0.0
 doi: 10.5281/zenodo.XXXXX
 date-released: 2025-12-30
-url: "https://github.com/nuelam9/pinn-burton-storm"
-repository-code: "https://github.com/nuelam9/pinn-burton-storm"
+url: "https://github.com/Nuelam9/PINN_Burton_Storm.git"
+repository-code: "https://github.com/Nuelam9/PINN_Burton_Storm.git"
 keywords:
   - physics-informed neural networks
   - burton equation
