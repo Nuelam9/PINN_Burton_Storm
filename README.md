@@ -112,7 +112,7 @@ If you use this code for your research, please cite:
 > Lacal, M., et al. (2025). "A Physics-Informed Neural Network Approach to the Gannon Storm". Submitted to *Geophysical Research Letters*.
 
 ### Software Archive (Zenodo)
-> Lacal, M. (2025). pinn-burton-storm (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.XXXXX
+> Lacal, M. (2025). "pinn-burton-storm: A Physics-Informed Neural Network Approach to the Gannon Storm". Zenodo. https://doi.org/10.5281/zenodo.18098818
 
 ## License
 

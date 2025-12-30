@@ -6,7 +6,7 @@ authors:
   orcid: "https://orcid.org/0009-0004-8683-6016"
 title: "pinn-burton-storm: A Physics-Informed Neural Network Approach to the Gannon Storm"
 version: 1.0.0
-doi: 10.5281/zenodo.XXXXX
+doi: 10.5281/zenodo.18098818
 date-released: 2025-12-30
 url: "https://github.com/Nuelam9/PINN_Burton_Storm.git"
 repository-code: "https://github.com/Nuelam9/PINN_Burton_Storm.git"
