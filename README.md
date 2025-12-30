@@ -44,14 +44,13 @@ Where:
 - **CUDA Version:** 11.8.0
 - **Operating System:** Linux (Broadwell architecture)
 Note: It is recommended to use a virtual environment.
-"""
 
 ## Installation
 
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/your-username/pinn-burton-storm.git](https://github.com/your-username/pinn-burton-storm.git)
+    git clone [https://github.com/Nuelam9/PINN_Burton_Storm.git](https://github.com/Nuelam9/PINN_Burton_Storm.git)
     cd pinn-burton-storm
     ```
 
