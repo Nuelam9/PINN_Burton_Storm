@@ -1,7 +1,6 @@
 # --- Data and Results ---
-data/
-*.csv
-*.xlsx
+#data/
+#*.csv
 
 results/
 plots/
