@@ -7,7 +7,6 @@ results/
 plots/
 checkpoints/
 history/
-.history/
 
 # --- Python ---
 __pycache__/
