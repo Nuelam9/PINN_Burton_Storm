@@ -53,8 +53,8 @@ Note: It is recommended to use a virtual environment.
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/Nuelam9/PINN_Burton_Storm.git](https://github.com/Nuelam9/PINN_Burton_Storm.git)
-    cd pinn-burton-storm
+    git clone https://github.com/Nuelam9/PINN_Burton_Storm.git
+    cd PINN_Burton_Storm    
     ```
 
 2.  **Install dependencies:**
