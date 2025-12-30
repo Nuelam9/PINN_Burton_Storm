@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Lacal"
+  given-names: "Manuel"
+  orcid: "https://orcid.org/0009-0004-8683-6016"
+title: "pinn-burton-storm: A Physics-Informed Neural Network Approach to the Gannon Storm"
+version: 1.0.0
+doi: 10.5281/zenodo.XXXXX
+date-released: 2025-12-30
+url: "https://github.com/nuelam9/pinn-burton-storm"
+repository-code: "https://github.com/nuelam9/pinn-burton-storm"
+keywords:
+  - physics-informed neural networks
+  - burton equation
+  - geomagnetic storms
+  - smr index
+  - space weather
+license: MIT
