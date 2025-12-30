@@ -26,6 +26,8 @@ Where:
 
 ```text
 .
+├── data/
+│   └── data.csv        # OMNI solar wind drivers
 ├── src/
 │   ├── __init__.py
 │   ├── config.py       # Hyperparameters, file paths, and physics constants
