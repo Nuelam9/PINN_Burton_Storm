@@ -122,5 +122,3 @@ If you use this code for your research, please cite:
 This project is licensed under the **MIT License**. This applies to all code and scripts within this repository. See the [LICENSE](LICENSE) file for the full text. 
 
 *Note: The data used in this project are subject to the terms of use of their respective providers (OMNI/CDAWeb and SuperMAG).*
-
-````
