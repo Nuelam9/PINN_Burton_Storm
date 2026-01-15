@@ -11,6 +11,7 @@ from .data import DataScaler
 
 def set_seed(seed: int):
     """Enforces reproducibility across numpy, random, and torch."""
+    seed = int(seed)
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
