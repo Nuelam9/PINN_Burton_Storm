@@ -43,8 +43,8 @@ Where:
 
 ## Environment
 - **Python Version:** 3.11.6
-- **CUDA Version:** 11.8.0
-- **Operating System:** Linux (Broadwell architecture)
+- **CUDA Version:** 11.8.0 (Optional, code runs on CPU as well)
+- **Operating System:** Tested on Linux (Broadwell architecture).
 
 Note: It is recommended to use a virtual environment.
 
@@ -64,13 +64,18 @@ Note: It is recommended to use a virtual environment.
     pip install -r requirements.txt
     ```
 
+
 ## Data Availability
 
-This repository does not include the raw data due to redistribution policies. To run the experiments, you need to:
+This repository contains a sample subset of the driving data (Solar Wind from OMNI) in the `data/` folder. However, **the target geomagnetic index (SMR) is not included** in `data.csv` due to redistribution policies of the SuperMAG collaboration.
 
-1.  **Solar Wind Data (OMNI):** Downloaded from [NASA CDAWeb](https://cdaweb.gsfc.nasa.gov/).
-2.  **Geomagnetic Indices (SuperMAG):** Obtain a free account and download the SMR index from [SuperMAG](https://supermag.jhuapl.edu/).
-3.  **Setup:** Place the downloaded CSV files in a `data/` folder and update the `file_path` in `src/config.py`.
+To reproduce the experiments, you must:
+
+1.  **Register:** Obtain a free account at [SuperMAG](https://supermag.jhuapl.edu/).
+2.  **Download:** Download the **SMR index** (in minutes) for the time interval corresponding to the storm in this study.
+3.  **Merge:** Add the SMR data as a new column named `smr` (case-sensitive) to the `data/data.csv` file.
+
+**Note on Code Execution:** The code will raise a `KeyError: 'smr'` if this column is missing from the input CSV.
 
 ## Configuration
 
@@ -109,13 +114,28 @@ The training process produces a composite plot for validation:
 
 ## Citation
 
-If you use this code for your research, please cite:
+If you use this code for your research, please cite the software archive via Zenodo:
 
-### Paper (Under Review)
-> Lacal, M., et al. (2025). "A Physics-Informed Neural Network Approach to the Gannon Storm". Submitted to *Geophysical Research Letters*.
+**BibTeX:**
 
-### Software Archive (Zenodo)
-> Lacal, M. (2025). "pinn-burton-storm: A Physics-Informed Neural Network Approach to the Gannon Storm". Zenodo. https://doi.org/10.5281/zenodo.18098818
+```bibtex
+@software{lacal2025pinn,
+  author       = {Lacal, Manuel},
+  title        = {pinn-burton-storm: A Physics-Informed Neural Network Approach to the Gannon Storm},
+  year         = 2026,
+  publisher    = {Zenodo},
+  version      = {v1.0.2},
+  doi          = {10.5281/zenodo.18098818},
+  url          = {[https://doi.org/10.5281/zenodo.18098818](https://doi.org/10.5281/zenodo.18098818)}
+}
+
+```
+
+### Associated Paper (Under Review)
+
+This software implements the methodology described in the manuscript:
+
+> Lacal, M., et al. (2025). "A Physics-Informed Neural Network Approach to the Gannon Storm". *Submitted to Geophysical Research Letters*.
 
 ## License
 

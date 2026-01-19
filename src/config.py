@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List, Dict, Optional
+from typing import List, Dict
 from pathlib import Path
 import torch
 
@@ -20,7 +20,7 @@ class Config:
     # --- Training Hyperparameters ---
     random_seed: int = 42
     train_steps: int = 35000
-    ensemble_size: int = 100  # Number of runs for uncertainty quantification
+    ensemble_size: int = 1  # Number of runs for uncertainty quantification
     
     # Learning Rates (Separated for stability)
     lrate: float = 2e-4           # Network weights
@@ -67,6 +67,7 @@ class Config:
         # Apply overrides if current q_col is in the list
         if self.q_col in self.param_overrides:
             self.a_init_range = self.param_overrides[self.q_col]
+            print(f"Config: Override applied for '{self.q_col}'. Init range set to {self.a_init_range}")
 
         self.result_path.mkdir(parents=True, exist_ok=True)
         self.device = torch.device(self.device)

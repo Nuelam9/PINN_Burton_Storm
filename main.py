@@ -20,11 +20,11 @@ def run_experiment(q_col_target: str):
     
     # Prepare Tensors (Data for Loss)
     t_obs_np = df_norm['time_norm'].values
-    u_obs_np = df_norm[config.y_col].values
+    y_obs_np = df_norm[config.y_col].values
     q_obs_np = df_norm[config.q_col].values
 
     t_obs = torch.tensor(t_obs_np, dtype=torch.float32).view(-1, 1)
-    u_obs = torch.tensor(u_obs_np, dtype=torch.float32).view(-1, 1)
+    y_obs = torch.tensor(y_obs_np, dtype=torch.float32).view(-1, 1)
     q_obs = torch.tensor(q_obs_np, dtype=torch.float32).view(-1, 1)
 
     # Ensemble Training Loop
@@ -45,15 +45,15 @@ def run_experiment(q_col_target: str):
         q_phys = torch.tensor(q_phys_np, dtype=torch.float32).view(-1, 1)
 
         # Initialize Model & Trainer
-        u0, t0 = u_obs[0].item(), t_obs[0].item()
+        y0, t0 = y_obs[0].item(), t_obs[0].item()
         tau_init = np.random.uniform(*config.tau_init_range)
         a_init = np.random.uniform(*config.a_init_range)
 
-        model = BurtonPINN(config, u0, t0, tau_init, a_init)
+        model = BurtonPINN(config, y0, t0, tau_init, a_init)
         trainer = PINNTrainer(model, config, scaler)
 
         try:
-            hist, best_state = trainer.train(t_obs, u_obs, t_phys, q_phys, ens_id)
+            hist, best_state = trainer.train(t_obs, y_obs, t_phys, q_phys, ens_id)
             trainer.save_checkpoint(ens_id)
 
             # Export History
@@ -64,18 +64,18 @@ def run_experiment(q_col_target: str):
 
             # Final Validation
             best_params = best_state['params_norm']
-            y_val_norm = validate_rk45(best_params, t_obs_np, u0, q_obs_np, scaler)
+            y_val_norm = validate_rk45(best_params, t_obs_np, y0, q_obs_np, scaler)
             y_val_phys = scaler.unscale_y(y_val_norm)
-            u_obs_phys = scaler.unscale_y(u_obs_np)
+            y_obs_phys = scaler.unscale_y(y_obs_np)
             
-            final_r2 = r2_score(u_obs_phys, y_val_phys)
+            final_r2 = r2_score(y_obs_phys, y_val_phys)
             phys_params = scaler.unscale_params(best_params)
             
-            print(f"Ens {ens_id} Result: a={phys_params['a']:.2f}, tau={phys_params['tau']:.2f} | R2={final_r2:.3f}")
+            print(f"Ens {ens_id} Result: a={phys_params['a']:.2g}, tau={phys_params['tau']:.2g} min | Val R2={final_r2:.3f}")
 
             # Plot Best State
             model.load_state_dict(best_state['model_state'])
-            plot_results(hist, model, t_obs, u_obs, q_obs, scaler, config, ens_id, 
+            plot_results(hist, model, t_obs, y_obs, q_obs, scaler, config, ens_id, 
                          step=best_state['step'], save=config.save_plots, best_params=best_params)
 
         except Exception as e:

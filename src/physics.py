@@ -9,11 +9,11 @@ class BurtonPINN(nn.Module):
     PINN wrapper for the Burton Equation: dy/dt = a*q(t) - y/tau.
     Learns the solution 'y' and parameters 'a' and 'tau'.
     """
-    def __init__(self, config: Config, u_0: float, t_0: float,
+    def __init__(self, config: Config, y_0: float, t_0: float,
                  tau_init_norm: float, a_init_norm: float):
         super().__init__()
         self.config = config
-        self.net = FCN(config, u_0, t_0)
+        self.net = FCN(config, y_0, t_0)
 
         # Learnable Physics Parameters
         # Tau is parametrized in log-space to enforce positivity (tau > 0)

@@ -18,10 +18,10 @@ class RFFLayer(nn.Module):
 
 class FCN(nn.Module):
     """Fully Connected Network with hard initial condition constraint."""
-    def __init__(self, config: Config, u_0: float, t_0: float):
+    def __init__(self, config: Config, y_0: float, t_0: float):
         super().__init__()
-        # Hard Constraint: u(t) = u0 + tanh(t - t0) * NN(t)
-        self.register_buffer('u_0', torch.tensor(u_0, dtype=torch.float32))
+        # Hard Constraint: y(t) = y0 + tanh(t - t0) * NN(t)
+        self.register_buffer('y_0', torch.tensor(y_0, dtype=torch.float32))
         self.register_buffer('t_0', torch.tensor(t_0, dtype=torch.float32))
 
         layers = []
@@ -45,7 +45,7 @@ class FCN(nn.Module):
     def forward(self, t: torch.Tensor) -> torch.Tensor:
         nn_out = self.net(t)
         # Apply ansatz
-        return self.u_0 + torch.tanh(t - self.t_0) * nn_out
+        return self.y_0 + torch.tanh(t - self.t_0) * nn_out
 
     @staticmethod
     def _init_weights(m: nn.Module):

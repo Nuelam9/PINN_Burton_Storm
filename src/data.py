@@ -17,6 +17,8 @@ class DataScaler:
         # Feature Scaling: Unit Variance
         self.y_std = float(df[self.y_col].std())
         self.q_std = float(df[self.q_col].std())
+        
+        print(f"Scaler: Duration={self.t_max_minutes:.1f} min | {self.y_col}_std={self.y_std:.2f} | {self.q_col}_std={self.q_std:.2f}")
 
     def normalize_data(self, df: pd.DataFrame) -> pd.DataFrame:
         df = df.copy()
