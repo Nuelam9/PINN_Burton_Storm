@@ -53,7 +53,7 @@ def run_experiment(q_col_target: str):
         trainer = PINNTrainer(model, config, scaler)
 
         try:
-            hist, best_state = trainer.train(t_obs, y_obs, t_phys, q_phys, ens_id)
+            hist, best_state = trainer.train(t_obs, y_obs, q_obs, t_phys, q_phys, ens_id)
             trainer.save_checkpoint(ens_id)
 
             # Export History

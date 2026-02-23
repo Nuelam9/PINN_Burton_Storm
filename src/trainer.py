@@ -36,9 +36,9 @@ class PINNTrainer:
         self.best_state = None
         self.patience_counter = 0
 
-    def train(self, t_obs, y_obs, t_phys, q_phys, ens_id: int):
+    def train(self, t_obs, y_obs, q_obs, t_phys, q_phys, ens_id: int):
         dev = self.config.device
-        t_obs, y_obs = t_obs.to(dev), y_obs.to(dev)
+        t_obs, y_obs, q_obs = t_obs.to(dev), y_obs.to(dev), q_obs.to(dev)
         t_phys, q_phys = t_phys.to(dev), q_phys.to(dev)
 
         pbar = tqdm(range(self.config.train_steps), desc=f"Ens {ens_id}", leave=False)
@@ -86,7 +86,7 @@ class PINNTrainer:
             
             # Visualization
             if not self.config.plot_final_only and step % self.config.plot_every == 0 and step > 0:
-                 plot_results(self.history, self.model, t_obs, y_obs, q_phys,
+                 plot_results(self.history, self.model, t_obs, y_obs, q_obs,
                               self.scaler, self.config, ens_id, step, save=self.config.save_plots)
 
         # Restore best model
